@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>List</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <%- include('nav') %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <%- include('nav') %>
 
-  <div class="list-container">
-    <h1>Task List</h1>
-
-    <% if (result.length > 0) { %>
-      <% result.forEach(task => { %>
-        <div class="task-card">
-          <h3><%= task.title %></h3>
-          <p><%= task.description %></p>
-          <a href="/delete/<%= task._id %>">Delete</a>
-          <a href="/update/<%= task._id %>">Update</a>
-        </div>
-      <% }) %>
-    <% } else { %>
+    <div class="list-container">
+      <h1>Task List</h1>
+<form action="/multi-delete" method="post">
+  <button class="btn delete-btn"  style="margin-bottom: 10px;">Delete All</button>
+      <% if (result.length > 0) { %> <% result.forEach(task => { %>
+      <div class="task-card">
+        <h3><%= task.title %></h3>
+        <p><%= task.description %></p>
+       <div> 
+        <input type="checkbox" name="selectedtext" value="/delete/<%= task._id %>">
+        <a href="/delete/<%= task._id %>" class="btn delete-btn">Delete</a>
+        <a href="/update/<%= task._id %>" class="btn update-btn">Update</a></div>
+      </div>
+      <% }) %> <% } else { %>
       <p class="no-task">No tasks available</p>
-    <% } %>
-   
-  </div>
-</body>
+      <% } %>
+      </form>
+    </div>
+  </body>
 </html>

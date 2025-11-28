@@ -37,16 +37,17 @@ app.post("/add", async (req, res) => {
   console.log(req.body);
   const db = await connectDB();
   const connection = db.collection(collection);
-  const result =  await connection.insertOne(req.body);
+  const result = await connection.insertOne(req.body);
 
   res.redirect("/");
 });
 
 app.get("/delete/:id", async (req, res) => {
-  
   const db = await connectDB();
   const connection = db.collection(collection);
-  const result = await connection.deleteOne({ _id: new ObjectId(req.params.id) });
+  const result = await connection.deleteOne({
+    _id: new ObjectId(req.params.id),
+  });
   if (result) {
     res.redirect("/");
   } else {
@@ -55,13 +56,30 @@ app.get("/delete/:id", async (req, res) => {
 });
 
 app.get("/update/:id", async (req, res) => {
-  const id =req.params.id
+  const id = req.params.id;
   const db = await connectDB();
   const connection = db.collection(collection);
-  const result =  await connection.findOne({ _id: new ObjectId(id) });
-  
+  const result = await connection.findOne({ _id: new ObjectId(id) });
+
   if (result) {
-       res.render("update", { result }); 
+    res.render("update", { result });
+  } else {
+    res.send("some error");
+  }
+});
+
+app.post("/update/:id", async (req, res) => {
+  // const id =req.params.id
+  const db = await connectDB();
+  const connection = db.collection(collection);
+  const filter = { _id: new ObjectId(req.params.id) };
+  const updateData = {
+    $set: { title: req.body.title, description: req.body.description },
+  };
+  const result = await connection.updateOne(filter, updateData);
+
+  if (result) {
+    res.redirect("/");
   } else {
     res.send("some error");
   }
