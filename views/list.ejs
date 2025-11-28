@@ -17,11 +17,14 @@
         <div class="task-card">
           <h3><%= task.title %></h3>
           <p><%= task.description %></p>
+          <a href="/delete/<%= task._id %>">Delete</a>
+          <a href="/update/<%= task._id %>">Update</a>
         </div>
       <% }) %>
     <% } else { %>
       <p class="no-task">No tasks available</p>
     <% } %>
+   
   </div>
 </body>
 </html>

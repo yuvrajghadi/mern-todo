@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update</title>
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    
         <%- include('nav') %> 
-<form action="/update" method="post" class="add-form">
-    <h1>Update page</h1>
-    <input type="text" placeholder="enter task title" name="title">
-    <textarea name="description" id=""></textarea>
-    <button>Update</button>
-</form>
+    <form action="/update/<%= result._id %>" method="post" class="add-form">
+        <h1>Update page</h1>
 
+        <input
+            type="text"
+            name="title"
+            value="<%= result.title %>"
+            placeholder="Enter task title"
+            required
+        >
+
+        <textarea name="description" required><%= result.description %></textarea>
+
+        <button type="submit">Update</button>
+    </form>
 </body>
 </html>
