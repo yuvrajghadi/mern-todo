@@ -18,7 +18,7 @@
         <h3><%= task.title %></h3>
         <p><%= task.description %></p>
        <div> 
-        <input type="checkbox" name="selectedtext" value="/delete/<%= task._id %>">
+        <input type="checkbox" name="selectedtask" value="<%= task._id %>">
         <a href="/delete/<%= task._id %>" class="btn delete-btn">Delete</a>
         <a href="/update/<%= task._id %>" class="btn update-btn">Update</a></div>
       </div>

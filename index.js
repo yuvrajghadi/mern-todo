@@ -85,4 +85,35 @@ app.post("/update/:id", async (req, res) => {
   }
 });
 
+app.post("/multi-delete", async (req, res) => {
+  // const id =req.params.id
+  const db = await connectDB();
+  const connection = db.collection(collection);
+
+console.log("Selected Values:", req.body.selectedtask);
+
+let selectedtask = undefined
+
+if (Array.isArray(req.body.selectedtask)) {
+  
+ selectedtask = req.body.selectedtask.map((id)=>new ObjectId(id))
+} else {
+  
+selectedtask = [new ObjectId(req.body.selectedtask)]
+}
+
+
+  
+  const result = await connection.deleteMany({_id:{$in:selectedtask}});
+
+
+  if (result) {
+    res.redirect("/");
+  } else {
+    res.send("some error");
+  }
+
+
+})
+
 app.listen(3300);
