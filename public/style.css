@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  background: #2575fc;
+  padding: 12px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 6px 10px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  background: white;
+  color: #2575fc;
+  border-radius: 4px;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: #2575fc;
+  margin: 0;
+}
+
+.add-form {
+  width: 350px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-form h1 {
+  text-align: center;
+  color: #2575fc;
+  margin-bottom: 15px;
+}
+
+.add-form input,
+.add-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+.add-form textarea {
+  resize: vertical;        /* Prevents horizontal resizing */
+  min-height: 100px;       /* Gives it proper space */
+  overflow-x: hidden;      /* Hides any accidental horizontal overflow */
+  display: block;          /* Ensures it behaves like a block element */
+  box-sizing: border-box;  /* Ensures padding doesn’t increase width */
+}
+
+
+
+.add-form button {
+  padding: 10px;
+  background: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.add-form button:hover {
+  background: #1a5fd1;
+}
