@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>list</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>List</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <%- include('nav') %> 
-    <h1>list page</h1>
+  <%- include('nav') %>
+
+  <div class="list-container">
+    <h1>Task List</h1>
+
+    <% if (result.length > 0) { %>
+      <% result.forEach(task => { %>
+        <div class="task-card">
+          <h3><%= task.title %></h3>
+          <p><%= task.description %></p>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p class="no-task">No tasks available</p>
+    <% } %>
+  </div>
 </body>
 </html>

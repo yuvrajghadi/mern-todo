@@ -20,8 +20,12 @@ const connectDB = async () => {
 
 
 app.set("view engine", "ejs");
-app.get("/", (req, res) => {
-  res.render("list");
+app.get("/", async(req, res) => {
+    const db= await connectDB()
+    const connection=db.collection(collection)
+    const result =await connection.find().toArray()
+    console.log(result)
+  res.render("list",{result});
 });
 
 app.get("/add", (req, res) => {
